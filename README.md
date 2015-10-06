@@ -1,4 +1,4 @@
 # fun
 just for fun
 
-## use react, webpack, frozenui and es6 to construct this project
+## use React, Webpack, Frozenui and ES6 to construct this project
