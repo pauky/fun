@@ -61,7 +61,9 @@ class Search extends React.Component {
   }
 
   render() {
-    var addJokeHtml = '';
+    var
+      addJokeHtml = '',
+      signOurHtml = '';
     if (this.state.user) {
       if (this.state.user._id === window.user._id) {
         addJokeHtml = (
@@ -87,6 +89,11 @@ class Search extends React.Component {
             </form>
           </div>
         );
+        signOurHtml = (
+          <div>
+            <button className="ui-btn-lg ui-btn-danger" onClick={this.userSignOut.bind(this)}>退出登录</button>
+          </div>
+        );
       }
       return (
         <div className="user-page">
@@ -97,9 +104,7 @@ class Search extends React.Component {
             {this.state.user.name}
           </div>
           {addJokeHtml}
-          <div>
-            <button className="ui-btn-lg ui-btn-danger" onClick={this.userSignOut.bind(this)}>退出登录</button>
-          </div>
+          {signOurHtml}
         </div>
       );
     } else {

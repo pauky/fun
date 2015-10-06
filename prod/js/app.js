@@ -9190,7 +9190,8 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var addJokeHtml = '';
+	      var addJokeHtml = '',
+	          signOurHtml = '';
 	      if (this.state.user) {
 	        if (this.state.user._id === window.user._id) {
 	          addJokeHtml = _react2['default'].createElement(
@@ -9230,6 +9231,15 @@ webpackJsonp([0],[
 	              )
 	            )
 	          );
+	          signOurHtml = _react2['default'].createElement(
+	            'div',
+	            null,
+	            _react2['default'].createElement(
+	              'button',
+	              { className: 'ui-btn-lg ui-btn-danger', onClick: this.userSignOut.bind(this) },
+	              '退出登录'
+	            )
+	          );
 	        }
 	        return _react2['default'].createElement(
 	          'div',
@@ -9245,15 +9255,7 @@ webpackJsonp([0],[
 	            this.state.user.name
 	          ),
 	          addJokeHtml,
-	          _react2['default'].createElement(
-	            'div',
-	            null,
-	            _react2['default'].createElement(
-	              'button',
-	              { className: 'ui-btn-lg ui-btn-danger', onClick: this.userSignOut.bind(this) },
-	              '退出登录'
-	            )
-	          )
+	          signOurHtml
 	        );
 	      } else {
 	        return _react2['default'].createElement(
