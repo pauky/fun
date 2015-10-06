@@ -24,7 +24,6 @@ class Card extends React.Component {
       bot: 40,
       page: 2
     }
-    console.log(Router);
     // Router.HashLocation.push('search')
   }
 
@@ -72,6 +71,9 @@ class Card extends React.Component {
   addComment() {
     var _self = this;
     var content = _self.$comment.val();
+    if (!$.trim(content)) {
+      return tip.showTip('评论内容不能为空', 2000, 'warn');
+    }
     http.commentAddJokeComment(_self.jokeId, content)
       .then(function (res) {
         if (res.error) {
