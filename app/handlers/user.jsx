@@ -41,6 +41,7 @@ class Search extends React.Component {
           tip.showTip('登出失败', 2000, 'warn');
           return console.log(res);
         }
+        window.user = undefined;
         Router.HashLocation.push('/');
       })
   }

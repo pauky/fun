@@ -9206,6 +9206,7 @@ webpackJsonp([0],[
 	          _jsModuleTipJs2['default'].showTip('登出失败', 2000, 'warn');
 	          return console.log(res);
 	        }
+	        window.user = undefined;
 	        _reactRouter2['default'].HashLocation.push('/');
 	      });
 	    }
