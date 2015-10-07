@@ -13,8 +13,8 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: [
           node_modules,
-          path.resolve(__dirname, 'app/lib/zepto.js'),
-          path.resolve(__dirname, 'app/lib/frozen.js')
+          path.resolve(__dirname, 'app/js/lib/zepto.js'),
+          path.resolve(__dirname, 'app/js/lib/frozen.js')
         ],
         loader: 'babel'
       },{

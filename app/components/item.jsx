@@ -4,7 +4,7 @@ import {Link} from 'react-router';
 class Item extends React.Component {
   openDetail () {
     require.ensure([], () => {
-      var Profile = require('../lib/kk.js');
+      var Profile = require('../js/lib/kk.js');
     });
   }
   render() {

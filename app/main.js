@@ -10,11 +10,11 @@ import USER from './handlers/user.jsx';
 import SIGNIN from './handlers/signIn.jsx';
 import SIGNUP from './handlers/signUp.jsx';
 
-import SM from './css/frozen.css';
-import BASIC from './css/less/basic.less';
+import SM from './css/lib/frozen.css';
+import BASIC from './css/basic.less';
 
-import Zepto from './lib/zepto.js';
-import SMJS from './lib/frozen.js';
+import Zepto from './js/lib/zepto.js';
+import SMJS from './js/lib/frozen.js';
 
 
 let routes = (

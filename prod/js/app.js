@@ -42,21 +42,21 @@ webpackJsonp([0],[
 
 	var _handlersSignUpJsx2 = _interopRequireDefault(_handlersSignUpJsx);
 
-	var _cssFrozenCss = __webpack_require__(236);
+	var _cssLibFrozenCss = __webpack_require__(236);
 
-	var _cssFrozenCss2 = _interopRequireDefault(_cssFrozenCss);
+	var _cssLibFrozenCss2 = _interopRequireDefault(_cssLibFrozenCss);
 
-	var _cssLessBasicLess = __webpack_require__(237);
+	var _cssBasicLess = __webpack_require__(237);
 
-	var _cssLessBasicLess2 = _interopRequireDefault(_cssLessBasicLess);
+	var _cssBasicLess2 = _interopRequireDefault(_cssBasicLess);
 
-	var _libZeptoJs = __webpack_require__(205);
+	var _jsLibZeptoJs = __webpack_require__(205);
 
-	var _libZeptoJs2 = _interopRequireDefault(_libZeptoJs);
+	var _jsLibZeptoJs2 = _interopRequireDefault(_jsLibZeptoJs);
 
-	var _libFrozenJs = __webpack_require__(241);
+	var _jsLibFrozenJs = __webpack_require__(241);
 
-	var _libFrozenJs2 = _interopRequireDefault(_libFrozenJs);
+	var _jsLibFrozenJs2 = _interopRequireDefault(_jsLibFrozenJs);
 
 	var routes = _react2['default'].createElement(
 	  _reactRouter.Route,
@@ -9626,8 +9626,8 @@ webpackJsonp([0],[
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/less-loader/index.js!./basic.less", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/less-loader/index.js!./basic.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/less-loader/index.js!./basic.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/less-loader/index.js!./basic.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});

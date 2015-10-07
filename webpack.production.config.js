@@ -9,7 +9,7 @@ var config = {
     vendors: ['react']
   },
   output: {
-    path: path.resolve(__dirname, 'prod'), //for saving the fonts
+    path: path.resolve(__dirname, 'prod'),
     filename: 'js/[name].js'
   },
   module: {
@@ -17,8 +17,8 @@ var config = {
       test: /\.jsx?$/,
       exclude: [
         node_modules_dir, 
-        path.resolve(__dirname, 'app/lib/zepto.js'),
-        path.resolve(__dirname, 'app/lib/frozen.js')
+        path.resolve(__dirname, 'app/js/lib/zepto.js'),
+        path.resolve(__dirname, 'app/js/lib/frozen.js')
         ],
       loader: 'babel'
     },

@@ -1,7 +1,7 @@
 import md5 from 'md5';
-import Zepto from '../../lib/zepto.js';
-import '../../lib/zeptojs/callbacks.js';
-import '../../lib/zeptojs/deferred.js';
+import Zepto from '../lib/zepto.js';
+import '../lib/zeptojs/callbacks.js';
+import '../lib/zeptojs/deferred.js';
 let _ooRoot = "";
 let _ooApi = "/api";
 class Http {
