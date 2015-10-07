@@ -3493,7 +3493,7 @@ webpackJsonp([0],[
 	var _reactRouter = __webpack_require__(157);
 
 	/**
-	 *  Show all tasks 
+	 *  Show all cards 
 	 */
 
 	var Cards = (function (_React$Component) {
@@ -3526,6 +3526,7 @@ webpackJsonp([0],[
 	      var skip = 0;
 	      var limit = 10;
 	      var page = 1;
+	      // 加载更多笑话的公共方法
 	      function loadMore() {
 	        lock = true;
 	        _jsModuleHttpJs2['default'].jokeLoadMore(skip, limit).then(function (res) {
@@ -3545,6 +3546,7 @@ webpackJsonp([0],[
 	        });
 	      }
 	      loadMore();
+	      // 监听窗口滚动条滚动，加载更多笑话
 	      $(window).scroll(function () {
 	        if (bot + $(window).scrollTop() >= $(document).height() - $(window).height()) {
 	          if (lock || end) {
@@ -9150,6 +9152,8 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(157);
 
+	var _reactRouter2 = _interopRequireDefault(_reactRouter);
+
 	var _jsModuleHttpJs = __webpack_require__(200);
 
 	var _jsModuleHttpJs2 = _interopRequireDefault(_jsModuleHttpJs);
@@ -9169,10 +9173,8 @@ webpackJsonp([0],[
 	    _classCallCheck(this, Search);
 
 	    _get(Object.getPrototypeOf(Search.prototype), 'constructor', this).call(this, props);
-	    this.types = { 'uncompleted': 0, 'completed': 1, 'all': 2 };
-	    // this.user = window.user;
 	    this.state = {
-	      user: {}
+	      user: ''
 	    };
 	    this.userId = this.props.params.id;
 	  }
@@ -9188,7 +9190,6 @@ webpackJsonp([0],[
 	          if (res.error) {
 	            return console.log(res);
 	          }
-	          console.log(res);
 	          _self.setState({
 	            user: res.result
 	          });
@@ -9205,9 +9206,11 @@ webpackJsonp([0],[
 	          _jsModuleTipJs2['default'].showTip('登出失败', 2000, 'warn');
 	          return console.log(res);
 	        }
-	        window.location.reload();
+	        _reactRouter2['default'].HashLocation.push('/');
 	      });
 	    }
+
+	    // 发布笑话
 	  }, {
 	    key: 'addJoke',
 	    value: function addJoke() {
@@ -9227,6 +9230,7 @@ webpackJsonp([0],[
 	      var addJokeHtml = '',
 	          signOurHtml = '';
 	      if (this.state.user) {
+	        // 看自己时
 	        if (this.state.user._id === window.user._id) {
 	          addJokeHtml = _react2['default'].createElement(
 	            'div',
@@ -9347,6 +9351,8 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(157);
 
+	var _reactRouter2 = _interopRequireDefault(_reactRouter);
+
 	var _jsModuleHttpJs = __webpack_require__(200);
 
 	var _jsModuleHttpJs2 = _interopRequireDefault(_jsModuleHttpJs);
@@ -9370,8 +9376,9 @@ webpackJsonp([0],[
 	    _classCallCheck(this, SignIn);
 
 	    _get(Object.getPrototypeOf(SignIn.prototype), 'constructor', this).call(this, props);
-	    this.types = { 'uncompleted': 0, 'completed': 1, 'all': 2 };
 	  }
+
+	  // 登录
 
 	  _createClass(SignIn, [{
 	    key: 'userSignIn',
@@ -9400,7 +9407,8 @@ webpackJsonp([0],[
 	          }
 	          return console.log(res);
 	        }
-	        window.location.reload();
+	        window.user = res.result;
+	        _reactRouter2['default'].HashLocation.push('user/' + res.result._id);
 	      });
 	    }
 	  }, {
@@ -9504,6 +9512,8 @@ webpackJsonp([0],[
 
 	var _reactRouter = __webpack_require__(157);
 
+	var _reactRouter2 = _interopRequireDefault(_reactRouter);
+
 	var _jsModuleHttpJs = __webpack_require__(200);
 
 	var _jsModuleHttpJs2 = _interopRequireDefault(_jsModuleHttpJs);
@@ -9527,8 +9537,9 @@ webpackJsonp([0],[
 	    _classCallCheck(this, SignUp);
 
 	    _get(Object.getPrototypeOf(SignUp.prototype), 'constructor', this).call(this, props);
-	    this.types = { 'uncompleted': 0, 'completed': 1, 'all': 2 };
 	  }
+
+	  // 注册
 
 	  _createClass(SignUp, [{
 	    key: 'signUp',
@@ -9561,7 +9572,8 @@ webpackJsonp([0],[
 	              break;
 	          }
 	        }
-	        console.log(res);
+	        window.user = res.result;
+	        _reactRouter2['default'].HashLocation.push('/');
 	      });
 	    }
 	  }, {

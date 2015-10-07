@@ -4,7 +4,7 @@ import http from '../js/module/http.js';
 import {RouteHandler, Link } from 'react-router';
 
 /**
- *  Show all tasks 
+ *  Show all cards 
  */
 class Cards extends React.Component {
   constructor(props) {
@@ -30,6 +30,7 @@ class Cards extends React.Component {
     let skip = 0;
     let limit = 10;
     let page = 1;
+    // 加载更多笑话的公共方法
     function loadMore() {
       lock = true;
       http.jokeLoadMore(skip, limit)
@@ -50,6 +51,7 @@ class Cards extends React.Component {
         });
     }
     loadMore();
+    // 监听窗口滚动条滚动，加载更多笑话
     $(window).scroll(function(){
       if((bot+$(window).scrollTop()) >=($(document).height()-$(window).height())){
         if (lock || end) {
@@ -82,8 +84,6 @@ class Cards extends React.Component {
       </section>
     );
 
-
-    
   }
 }
 

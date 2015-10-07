@@ -7,8 +7,8 @@ import CARDS from './handlers/cards.jsx';
 import CARD from './handlers/card.jsx'
 import SERACH from './handlers/search.jsx';
 import USER from './handlers/user.jsx';
-import SIGNIN from './handlers/signIn.jsx';
-import SIGNUP from './handlers/signUp.jsx';
+import SIGNIN from './handlers/sign-in.jsx';
+import SIGNUP from './handlers/sign-up.jsx';
 
 import SM from './css/lib/frozen.css';
 import BASIC from './css/basic.less';

@@ -1,4 +1,5 @@
 import React from 'react';
+import Router from 'react-router';
 import {RouteHandler, Link } from 'react-router';
 import http from '../js/module/http.js';
 import tip from '../js/module/tip.js';
@@ -10,10 +11,8 @@ class Search extends React.Component {
 
   constructor(props) {
     super(props);
-    this.types = {'uncompleted': 0, 'completed': 1, 'all': 2};
-    // this.user = window.user;
     this.state = {
-      user: {}
+      user: ''
     };
     this.userId = this.props.params.id;
   }
@@ -27,7 +26,6 @@ class Search extends React.Component {
           if (res.error) {
             return console.log(res);
           }
-          console.log(res);
           _self.setState({
             user: res.result
           })
@@ -43,10 +41,11 @@ class Search extends React.Component {
           tip.showTip('登出失败', 2000, 'warn');
           return console.log(res);
         }
-        window.location.reload();
+        Router.HashLocation.push('/');
       })
   }
 
+  // 发布笑话
   addJoke() {
     let $addJoke = $('.add-joke');
     let title = $addJoke.find('input[name="title"]').val();
@@ -65,6 +64,7 @@ class Search extends React.Component {
       addJokeHtml = '',
       signOurHtml = '';
     if (this.state.user) {
+      // 看自己时
       if (this.state.user._id === window.user._id) {
         addJokeHtml = (
           <div className="add-joke">
