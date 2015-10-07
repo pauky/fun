@@ -102,18 +102,34 @@ class Search extends React.Component {
     let tasks = [];
     switch (this.state.searchType) {
       case 'joke':
-        tasks = taskList.map(function(task) {
-          return (
-            <Item joke={task}/>
+        if (taskList.length === 0) {
+          tasks = (
+            <div className="ui-tips ui-tips-info">
+              <i></i><span>没有搜索相关笑话</span>
+            </div>
           );
-        });
+        } else {
+          tasks = taskList.map(function(task) {
+            return (
+              <Item joke={task}/>
+            );
+          });
+        }
         break;
       case 'user':
-        tasks = taskList.map(function(user) {
-          return (
-            <UserItem user={user}/>
+        if (taskList.length === 0) {
+          tasks = (
+            <div className="ui-tips ui-tips-info">
+              <i></i><span>没有搜索相关用户</span>
+            </div>
           );
-        });
+        } else {
+          tasks = taskList.map(function(user) {
+            return (
+              <UserItem user={user}/>
+            );
+          });
+        }
         break;
     }
     

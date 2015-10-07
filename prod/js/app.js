@@ -6806,14 +6806,40 @@ webpackJsonp([0],[
 	      var tasks = [];
 	      switch (this.state.searchType) {
 	        case 'joke':
-	          tasks = taskList.map(function (task) {
-	            return _reactAddons2['default'].createElement(_componentsItemJsx2['default'], { joke: task });
-	          });
+	          if (taskList.length === 0) {
+	            tasks = _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'ui-tips ui-tips-info' },
+	              _reactAddons2['default'].createElement('i', null),
+	              _reactAddons2['default'].createElement(
+	                'span',
+	                null,
+	                '没有搜索相关笑话'
+	              )
+	            );
+	          } else {
+	            tasks = taskList.map(function (task) {
+	              return _reactAddons2['default'].createElement(_componentsItemJsx2['default'], { joke: task });
+	            });
+	          }
 	          break;
 	        case 'user':
-	          tasks = taskList.map(function (user) {
-	            return _reactAddons2['default'].createElement(_componentsUserItemJsx2['default'], { user: user });
-	          });
+	          if (taskList.length === 0) {
+	            tasks = _reactAddons2['default'].createElement(
+	              'div',
+	              { className: 'ui-tips ui-tips-info' },
+	              _reactAddons2['default'].createElement('i', null),
+	              _reactAddons2['default'].createElement(
+	                'span',
+	                null,
+	                '没有搜索相关用户'
+	              )
+	            );
+	          } else {
+	            tasks = taskList.map(function (user) {
+	              return _reactAddons2['default'].createElement(_componentsUserItemJsx2['default'], { user: user });
+	            });
+	          }
 	          break;
 	      }
 
