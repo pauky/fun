@@ -6710,13 +6710,13 @@ webpackJsonp([0],[
 	    _classCallCheck(this, Search);
 
 	    _get(Object.getPrototypeOf(Search.prototype), 'constructor', this).call(this, props);
-	    this.types = { 'uncompleted': 0, 'completed': 1, 'all': 2 };
-	    this.limit = 20;
 	    this.state = {
-	      jokes: [],
-	      searchType: ''
+	      jokes: [], // 搜索结果
+	      searchType: '' // 搜索类型
 	    };
+	    // 加载中动画隐藏显示的标志
 	    this.loadingDisplay = 'none';
+	    // 搜索列表加载更多的对数
 	    this.searchListParam = {
 	      limit: 20,
 	      skip: 0,
@@ -6742,9 +6742,10 @@ webpackJsonp([0],[
 	      $('.ui-searchbar-cancel').tap(function () {
 	        $('.ui-searchbar-wrap').removeClass('focus');
 	      });
+	      // 监听窗口滚动条滚动事件，加载更多搜索结果
 	      $(window).scroll(function () {
 	        if (_self.searchListParam.bot + $(window).scrollTop() >= $(document).height() - $(window).height()) {
-	          if (_self.searchListParam.lock || _self.searchListParam.end) {
+	          if (_self.searchListParam.lock || _self.searchListParam.end || !_self.searchListParam.keyword) {
 	            return false;
 	          }
 	          _self.searchListParam.skip = _self.searchListParam.limit * _self.searchListParam.page;
@@ -6752,6 +6753,8 @@ webpackJsonp([0],[
 	        }
 	      });
 	    }
+
+	    // 获取搜索结果的公共方法
 	  }, {
 	    key: 'getSearchRes',
 	    value: function getSearchRes(skip) {
@@ -6778,11 +6781,16 @@ webpackJsonp([0],[
 	        }
 	      });
 	    }
+
+	    // 响应搜索框keyDown事件
 	  }, {
 	    key: 'onSearchInputKeyDown',
 	    value: function onSearchInputKeyDown(e) {
 	      var _self = this;
 	      if (e.charCode === 13) {
+	        if (!e.target.value) {
+	          return tip.showTip('请输入搜索内容', 2000, 'warn');
+	        }
 	        _self.searchListParam.lock = false;
 	        _self.searchListParam.end = false;
 	        _self.searchListParam.searchType = $('input[name="searchType"]:checked').val();
@@ -6822,7 +6830,7 @@ webpackJsonp([0],[
 	            _reactAddons2['default'].createElement(
 	              'div',
 	              { className: 'ui-searchbar-text' },
-	              '搜索号码（2-10位）'
+	              '请输入搜索内容'
 	            ),
 	            _reactAddons2['default'].createElement(
 	              'div',
@@ -9063,12 +9071,12 @@ webpackJsonp([0],[
 	        null,
 	        _react2['default'].createElement(
 	          _reactRouter.Link,
-	          { to: '/user/' + user._id + '.html', className: 'ui-avatar', style: { "display": "block" } },
+	          { to: '/user/' + user._id, className: 'ui-avatar', style: { "display": "block" } },
 	          _react2['default'].createElement('span', { style: { "background-image": "url('" + user.avatar + "')" } })
 	        ),
 	        _react2['default'].createElement(
 	          _reactRouter.Link,
-	          { to: '/user/' + user._id + '.html', className: 'ui-list-info ui-border-t' },
+	          { to: '/user/' + user._id, className: 'ui-list-info ui-border-t' },
 	          _react2['default'].createElement(
 	            'h4',
 	            { className: 'ui-nowrap' },

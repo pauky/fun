@@ -9,13 +9,13 @@ import UserItem from '../components/user-item.jsx';
 class Search extends React.Component {
   constructor(props) {
     super(props);
-    this.types = {'uncompleted': 0, 'completed': 1, 'all': 2};
-    this.limit = 20;
     this.state = {
-      jokes: [],
-      searchType: ''
+      jokes: [], // 搜索结果
+      searchType: '' // 搜索类型
     };
+    // 加载中动画隐藏显示的标志
     this.loadingDisplay = 'none';
+    // 搜索列表加载更多的对数
     this.searchListParam = {
       limit: 20,
       skip: 0,
@@ -36,11 +36,12 @@ class Search extends React.Component {
         $('.ui-searchbar-input input').focus();
     });
     $('.ui-searchbar-cancel').tap(function(){
-        $('.ui-searchbar-wrap').removeClass('focus');
+      $('.ui-searchbar-wrap').removeClass('focus');
     });
+    // 监听窗口滚动条滚动事件，加载更多搜索结果
     $(window).scroll(function(){
       if((_self.searchListParam.bot+$(window).scrollTop()) >=($(document).height()-$(window).height())){
-        if (_self.searchListParam.lock || _self.searchListParam.end) {
+        if (_self.searchListParam.lock || _self.searchListParam.end || !_self.searchListParam.keyword) {
           return false;
         }
         _self.searchListParam.skip = _self.searchListParam.limit * _self.searchListParam.page;
@@ -49,6 +50,7 @@ class Search extends React.Component {
     });
   }
 
+  // 获取搜索结果的公共方法
   getSearchRes(skip) {
     var _self = this;
     _self.searchListParam.lock = true;
@@ -79,9 +81,13 @@ class Search extends React.Component {
       })
   }
 
+  // 响应搜索框keyDown事件
   onSearchInputKeyDown(e) {
     var _self = this;
     if (e.charCode === 13) {
+      if (!e.target.value) {
+        return tip.showTip('请输入搜索内容', 2000, 'warn');
+      }
       _self.searchListParam.lock = false;
       _self.searchListParam.end = false;
       _self.searchListParam.searchType = $('input[name="searchType"]:checked').val();
@@ -116,7 +122,7 @@ class Search extends React.Component {
         <div className="ui-searchbar-wrap ui-border-b">
             <div className="ui-searchbar ui-border-radius">
                 <i className="ui-icon-search"></i>
-                <div className="ui-searchbar-text">搜索号码（2-10位）</div>
+                <div className="ui-searchbar-text">请输入搜索内容</div>
                 <div className="ui-searchbar-input">
                   <input onKeyPress={this.onSearchInputKeyDown.bind(this)} />
                 </div>
